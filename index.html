@@ -955,166 +955,264 @@
 
 
 
-<!-- [SEO Optimized Footer] -->
-<footer id="dynamic-footer" role="contentinfo" style="font-size: 12px; color: #777; padding: 50px 20px; text-align: center; line-height: 1.8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #fafafa; border-top: 1px solid #eee;">
-  
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <div style="margin-bottom: 15px; font-weight: 600; color: #333; letter-spacing: -0.02em;">
-      © <span id="copyright-year">2026</span> <span id="site-title-display" style="color: #222;">Website</span>. All rights reserved.
+<footer id="master-footer" class="wf-footer" role="contentinfo">
+  <div class="wf-inner">
+    
+    <!-- 1. SEO 안전 안내 링크 (모달 방식으로 404 크롤링 에러 0건 보장) -->
+    <nav class="wf-nav" aria-label="사이트 이용 안내">
+      <button type="button" class="wf-link-btn" onclick="wfOpenModal('wf-modal-privacy')">개인정보처리방침</button>
+      <span class="wf-sep" aria-hidden="true">|</span>
+      <button type="button" class="wf-link-btn" onclick="wfOpenModal('wf-modal-terms')">이용약관</button>
+      <span class="wf-sep" aria-hidden="true">|</span>
+      <button type="button" class="wf-link-btn" onclick="wfOpenModal('wf-modal-about')">사이트 소개</button>
+    </nav>
+
+    <!-- 2. 신뢰성 표시 -->
+    <div class="wf-status" role="status">
+      <span class="wf-dot" aria-hidden="true"></span>
+      <span>정상 서비스 제공 중</span>
     </div>
 
-    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; color: #888; flex-wrap: wrap;">
-      <div style="display: flex; align-items: center; gap: 6px;">
-        <!-- 실시간 상태 표시등 (시각적 신뢰도 및 생동감) -->
-        <span id="status-indicator" style="display: inline-block; width: 7px; height: 7px; background-color: #2ecc71; border-radius: 50%; box-shadow: 0 0 5px #2ecc71;"></span>
-        <span id="sync-status" aria-live="polite" style="font-weight: 400;">시스템 안정화 확인</span>
-      </div>
-      <span style="color: #ddd; margin: 0 5px;">|</span>
-      <div style="display: flex; align-items: center; gap: 5px;">
-        <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16" style="margin-top:-2px;"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/></svg>
-        <span>최근 업데이트: <time id="last-update-time">2026-05-03</time></span>
-      </div>
+    <!-- 3. 저작권 (KST 연도 및 사이트명 자동 동기화) -->
+    <div class="wf-copy">
+      <small>© <span class="wf-year">2026</span> <span class="wf-brand">Website</span>. All rights reserved.</small>
     </div>
+
   </div>
 
+  <!-- [내장 팝업 1] 개인정보처리방침 (별도 페이지 없이도 법적/신뢰성 요건 충족) -->
+  <dialog id="wf-modal-privacy" class="wf-dialog" aria-labelledby="wf-priv-title">
+    <div class="wf-dialog-box">
+      <div class="wf-dialog-header">
+        <h3 id="wf-priv-title">개인정보처리방침</h3>
+        <button type="button" class="wf-close-btn" onclick="wfCloseModal('wf-modal-privacy')" aria-label="닫기">&times;</button>
+      </div>
+      <div class="wf-dialog-body">
+        <p>본 사이트는 이용자의 개인정보를 중요시하며, 관련 법령을 준수하고 있습니다.</p>
+        <p>1. <strong>수집 항목:</strong> 서비스 이용 과정에서 생성되는 쿠키, IP 주소 및 통계 데이터</p>
+        <p>2. <strong>이용 목적:</strong> 사이트 성능 개선, 통계 분석 및 비정상적 트래픽 차단</p>
+        <p>3. <strong>보관 기간:</strong> 수집 및 이용 목적 달성 시 지체 없이 파기합니다.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- [내장 팝업 2] 이용약관 -->
+  <dialog id="wf-modal-terms" class="wf-dialog" aria-labelledby="wf-terms-title">
+    <div class="wf-dialog-box">
+      <div class="wf-dialog-header">
+        <h3 id="wf-terms-title">이용약관</h3>
+        <button type="button" class="wf-close-btn" onclick="wfCloseModal('wf-modal-terms')" aria-label="닫기">&times;</button>
+      </div>
+      <div class="wf-dialog-body">
+        <p>본 사이트가 제공하는 모든 콘텐츠는 참고용 정보이며, 무단 복제 및 전재를 금지합니다.</p>
+        <p>이용자는 관련 법령과 공서양속을 준수하여 사이트를 이용해야 합니다.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- [내장 팝업 3] 사이트 소개 -->
+  <dialog id="wf-modal-about" class="wf-dialog" aria-labelledby="wf-about-title">
+    <div class="wf-dialog-box">
+      <div class="wf-dialog-header">
+        <h3 id="wf-about-title">사이트 소개</h3>
+        <button type="button" class="wf-close-btn" onclick="wfCloseModal('wf-modal-about')" aria-label="닫기">&times;</button>
+      </div>
+      <div class="wf-dialog-body">
+        <p>본 사이트는 유용한 정보를 빠르고 정확하게 제공하기 위해 운영되는 플랫폼입니다.</p>
+        <p>항상 안정적이고 최적화된 웹 환경을 제공하도록 최선을 다하겠습니다.</p>
+      </div>
+    </div>
+  </dialog>
+
   <style>
-    #status-indicator { animation: pulse-green 2s infinite ease-in-out; }
-    @keyframes pulse-green {
-      0% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.1); }
-      100% { opacity: 1; transform: scale(1); }
+    /* 초경량 & 무결점 반응형 CSS */
+    .wf-footer {
+      background: #f8f9fa;
+      border-top: 1px solid #e9ecef;
+      color: #6c757d;
+      font-size: 13px;
+      line-height: 1.6;
+      padding: 32px 16px;
+      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      box-sizing: border-box;
+      width: 100%;
     }
-    #dynamic-footer a { color: #777; text-decoration: none; transition: color 0.2s; }
-    #dynamic-footer a:hover { color: #333; }
+    @media (prefers-color-scheme: dark) {
+      .wf-footer { background: #181a1b; border-top-color: #2c3032; color: #9aa0a6; }
+      .wf-footer .wf-link-btn { color: #bdc1c6; }
+      .wf-footer .wf-copy { color: #80868b; }
+      .wf-footer .wf-status { background: #202425; border-color: #2c3032; }
+      .wf-dialog-box { background: #222629; color: #e8eaed; }
+      .wf-dialog-header { border-bottom-color: #33383b; }
+      .wf-close-btn { color: #e8eaed; }
+    }
+    .wf-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .wf-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    /* 링크처럼 보이는 시맨틱 버튼 스타일 */
+    .wf-link-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 12px;
+      font-weight: 500;
+      color: #495057;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .wf-link-btn:hover {
+      text-decoration: underline;
+    }
+    .wf-sep {
+      color: #ced4da;
+      font-size: 10px;
+    }
+    .wf-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      font-size: 11px;
+    }
+    .wf-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #22c55e;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .wf-copy {
+      font-size: 12px;
+      color: #868e96;
+    }
+    .wf-copy small {
+      font-size: 100%;
+    }
+
+    /* 네이티브 다이얼로그(모달) 스타일 */
+    .wf-dialog {
+      border: none;
+      border-radius: 12px;
+      padding: 0;
+      max-width: 480px;
+      width: 90%;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    .wf-dialog::backdrop {
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(2px);
+    }
+    .wf-dialog-box {
+      background: #ffffff;
+      padding: 20px;
+      text-align: left;
+    }
+    .wf-dialog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e9ecef;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+    .wf-dialog-header h3 {
+      margin: 0;
+      font-size: 16px;
+      color: inherit;
+    }
+    .wf-close-btn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      color: #6c757d;
+    }
+    .wf-dialog-body {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .wf-dialog-body p {
+      margin: 6px 0;
+    }
   </style>
-</footer>
 
-<script>
-(function() {
-  'use strict';
-
-  function getKstInfo() {
-    const now = new Date();
-    const formatter = new Intl.DateTimeFormat('ko-KR', {
-      timeZone: 'Asia/Seoul',
-      year: 'numeric', month: '2-digit', day: '2-digit',
-      hour: '2-digit', minute: '2-digit', second: '2-digit',
-      hour12: false
-    });
-
-    const parts = formatter.formatToParts(now).reduce((acc, part) => {
-      acc[part.type] = part.value;
-      return acc;
-    }, {});
-
-    return {
-      year: parts.year,
-      date: `${parts.year}-${parts.month}-${parts.day}`,
-      iso: `${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}:${parts.second}+09:00`
-    };
+  <script>
+  // 모달 열기/닫기 전역 함수
+  function wfOpenModal(id) {
+    var modal = document.getElementById(id);
+    if (modal && typeof modal.showModal === 'function') {
+      modal.showModal();
+    }
+  }
+  function wfCloseModal(id) {
+    var modal = document.getElementById(id);
+    if (modal && typeof modal.close === 'function') {
+      modal.close();
+    }
   }
 
-  function updateSeo(data) {
-    const siteTitle = document.title.split('|')[0].split('-')[0].trim() || window.location.hostname;
-    const currentUrl = window.location.href;
-    const originUrl = window.location.origin;
+  (function() {
+    'use strict';
+    try {
+      // 1. KST 기준 연도 산출
+      var now = new Date();
+      var year = String(now.getFullYear());
+      try {
+        var fmt = new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', year: 'numeric' });
+        year = fmt.format(now).replace(/[^0-9]/g, '');
+      } catch (err) {}
 
-    // 1. Meta Tags (동적 주입으로 Freshness 증명)
-    const metaMap = {
-      'property="og:updated_time"': data.iso,
-      'property="article:modified_time"': data.iso,
-      'name="last-modified"': data.iso,
-      'name="date"': data.date,
-      'name="copyright"': `${data.year} ${siteTitle}`
-    };
-
-    Object.entries(metaMap).forEach(([selector, content]) => {
-      let el = document.querySelector(`meta[${selector}]`);
-      if (!el) {
-        el = document.createElement('meta');
-        const [attr, value] = selector.split('=');
-        el.setAttribute(attr, value.replace(/"/g, ''));
-        document.head.appendChild(el);
+      // 2. 브랜드명 자동 감지
+      var brand = '';
+      var ogMeta = document.querySelector('meta[property="og:site_name"]');
+      if (ogMeta && ogMeta.content) {
+        brand = ogMeta.content.trim();
       }
-      el.content = content;
-    });
-
-    // 2. Advanced JSON-LD (Search Result 최적화)
-    let ldScript = document.getElementById('advanced-seo-ld') || document.createElement('script');
-    ldScript.id = 'advanced-seo-ld';
-    ldScript.type = 'application/ld+json';
-    
-    const jsonLd = {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "@id": originUrl + "/#website",
-          "url": originUrl,
-          "name": siteTitle,
-          "publisher": { "@id": originUrl + "/#organization" }
-        },
-        {
-          "@type": "WebPage",
-          "@id": currentUrl + "/#webpage",
-          "url": currentUrl,
-          "name": document.title,
-          "datePublished": data.iso, // 실제 발행일이 있다면 그것을 사용하는게 좋으나, 없을 경우 업데이트일 대체
-          "dateModified": data.iso,
-          "isPartOf": { "@id": originUrl + "/#website" },
-          "inLanguage": "ko-KR"
-        },
-        {
-          "@type": "BreadcrumbList",
-          "itemListElement": [{
-            "@type": "ListItem",
-            "position": 1,
-            "name": siteTitle,
-            "item": originUrl
-          }]
+      if (!brand && document.title) {
+        var titleParts = document.title.split(/[\-\|\:\—]/);
+        if (titleParts.length > 1) {
+          var lastPart = titleParts[titleParts.length - 1].trim();
+          if (lastPart.length > 0 && lastPart.length < 25) brand = lastPart;
         }
-      ]
-    };
-    ldScript.textContent = JSON.stringify(jsonLd);
-    if (!ldScript.parentNode) document.head.appendChild(ldScript);
-  }
+      }
+      if (!brand && window.location.hostname) {
+        brand = window.location.hostname.replace(/^www\./i, '').split('.')[0];
+        brand = brand.charAt(0).toUpperCase() + brand.slice(1);
+      }
 
-  function updateUi(data) {
-    const siteTitle = document.title.split('|')[0].split('-')[0].trim() || window.location.hostname;
-    
-    document.getElementById('copyright-year').textContent = data.year;
-    document.getElementById('site-title-display').textContent = siteTitle;
-    
-    const timeElem = document.getElementById('last-update-time');
-    timeElem.textContent = data.date;
-    timeElem.setAttribute('datetime', data.iso);
+      // 3. 텍스트 안전 교체 (CLS 없음)
+      var yearNode = document.querySelector('#master-footer .wf-year');
+      var brandNode = document.querySelector('#master-footer .wf-brand');
+      if (yearNode && year && yearNode.textContent !== year) yearNode.textContent = year;
+      if (brandNode && brand && brandNode.textContent !== brand) brandNode.textContent = brand;
 
-    // 중복 사이트 패턴 방지를 위한 고유 메시지 생성기
-    const statusMsgs = [
-      "데이터 무결성 검증 완료", "보안 프로토콜 최신화", "콘텐츠 동기화 엔진 정상", 
-      "캐시 최적화 레이어 적용", "시스템 리소스 최적화 완료", "실시간 색인 가속화 활성",
-      "웹 표준 스키마 검증", "네트워크 지연율 최적화", "사용자 경험 데이터 갱신"
-    ];
-    
-    // 사이트 이름 길이를 이용해 메시지를 고정적으로 선택 (완전 랜덤보다 사이트별 고유성 부여)
-    const msgIndex = siteTitle.length % statusMsgs.length;
-    document.getElementById('sync-status').textContent = statusMsgs[msgIndex];
-  }
-
-  // 실행 (DOM 로드 부하 분산)
-  const run = () => {
-    const data = getKstInfo();
-    updateUi(data);
-    updateSeo(data);
-  };
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', run);
-  } else {
-    run();
-  }
-})();
-</script>
+      // 4. 모달 배경 클릭 시 닫기 지원
+      document.querySelectorAll('#master-footer .wf-dialog').forEach(function(dialog) {
+        dialog.addEventListener('click', function(e) {
+          if (e.target === dialog) dialog.close();
+        });
+      });
+    } catch (e) {}
+  })();
+  </script>
+</footer>
 
 
 
